@@ -1,0 +1,90 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:controlsprimitives="using:Microsoft.Toolkit.Uwp.UI.Controls.Primitives"
+    xmlns:local="using:Canis">
+
+    <!--MAIN PAGE LVL O MENU TEMPLATE-->
+    <Style TargetType="HubSection" x:Name="HubSectionStyle">
+        <Setter Property="HeaderTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"
+                          FontFamily="ms-appx:///Fonts/venus rising rg.ttf#Venus Rising"
+                          FontSize="12"
+                          FontWeight="Thin"/>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--FONT LINKS-->
+    <!--FontFamily="ms-appx:///Fonts/conthrax-sb.ttf#Conthrax"/>-->
+    <!--FontFamily="ms-appx:///Fonts/neuropol.ttf#Neuropol"/>-->
+    <!--FontFamily="ms-appx:///Fonts/Oxanium-Bold.ttf#Oxanium"/>-->
+    <!--FontFamily="ms-appx:///Fonts/SulphurPoint-Regular.otf#Sulphur Point"/>-->
+    <!--FontFamily="ms-appx:///Fonts/BITSUMIS.ttf#Bitsumishi"-->
+    <!--FontFamily="ms-appx:///Fonts/Roboto-Light.ttf#Roboto Lt"-->
+    <!--FontFamily="ms-appx:///Fonts/Roboto-Regular.ttf#Roboto Regular"-->
+    <!--FontFamily="ms-appx:///Fonts/Comfortaa-Regular.ttf#Comfortaa"-->
+
+
+    <!--DEFAULT TEXTBLOCKS-->
+    <Style TargetType="TextBlock" x:Name="TextBlockStyle">
+        <Setter Property="FontFamily" Value="ms-appx:///Fonts/conthrax-sb.ttf#Conthrax"/>
+    </Style>
+
+    <!--DEFAULT TEXTBOXES-->
+    <Style TargetType="TextBox" x:Name="TextBoxStyle">
+        <Setter Property="FontFamily" Value="ms-appx:///Fonts/SulphurPoint-Regular.otf#Sulphur Point"/>
+    </Style>
+
+    <!--DEFAULT DATAGRIDS-->
+    <Style x:Key="DataGridStyle" TargetType="controls:DataGrid">
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="AlternatingRowBackground" Value="{ThemeResource SystemControlBackgroundBaseLowBrush}"/>
+        <Setter Property="AreRowGroupHeadersFrozen" Value="True"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="CanUserSortColumns" Value="True"/>
+        <Setter Property="CanUserReorderColumns" Value="False"/>
+        <Setter Property="CanUserResizeColumns" Value="True"/>
+        <Setter Property="ColumnHeaderHeight" Value="32"/>
+        <Setter Property="GridLinesVisibility" Value="Vertical"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="RowDetailsVisibilityMode" Value="Collapsed"/>
+        <Setter Property="SelectionMode" Value="Extended"/>
+        <Setter Property="IsDoubleTapEnabled" Value="True"/>
+        <Setter Property="ColumnHeaderStyle" Value="{StaticResource DataGridHeaderStyle}"/>
+        <Setter Property="CellStyle" Value="{StaticResource DataGridCellsStyle}"/>
+    </Style>
+
+    <!--DEFAULT DATAGRIDS' HEADERS-->
+    <Style x:Key="DataGridHeaderStyle" TargetType="controlsprimitives:DataGridColumnHeader">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controlsprimitives:DataGridColumnHeader">
+                    <Grid>
+                        <Border BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}" BorderThickness="1">
+                        <ContentPresenter 
+                            VerticalAlignment="Center"
+                            FontFamily="ms-appx:///Fonts/conthrax-sb.ttf#Conthrax"
+                            Padding="10,5"
+                            />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--DEFAULT DATAGRIDS' CELLS-->
+    <Style x:Key="DataGridCellsStyle" TargetType="controls:DataGridCell">
+        <Setter Property="FontFamily" Value="ms-appx:///Fonts/Comfortaa-Regular.ttf#Comfortaa"/>
+        <Setter Property="FontSize" Value="13"/>
+    </Style>
+
+</ResourceDictionary>

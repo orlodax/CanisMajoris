@@ -1,0 +1,95 @@
+﻿<Page
+    x:Class="Canis.Views.Templates.ListFrame"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:Canis.Views.Templates"
+    xmlns:utility="using:Canis.Utility"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <SplitView x:Name="splitView"
+               PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" 
+               IsPaneOpen="{Binding IsPaneOpen}" 
+               OpenPaneLength="{Binding PaneLenght}" 
+               CompactPaneLength="0" 
+               DisplayMode="Inline"
+               PanePlacement="Right">
+        <SplitView.Pane>
+            <ScrollViewer Name="gridPane">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <CommandBar Grid.Row="0" Margin="-20,0,0,0" Background="Transparent" IsOpen="False" HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
+                        <AppBarButton Icon="Forward" Tag="Chiudi" ToolTipService.ToolTip="Chiudi" Command="{Binding ClosePaneCMD}" />
+                    </CommandBar>
+
+                    <Frame Grid.Row="1" Content="{Binding Path=PaneContent, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+                    <Button Grid.Row="2"
+                            Margin="0,20,0,0"
+                            HorizontalAlignment="Center"
+                            Content="Salva i dettagli"                   
+                            Background="{ThemeResource SystemControlForegroundAccentBrush}">
+                    </Button>
+                </Grid>
+            </ScrollViewer>
+        </SplitView.Pane>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Height="36" Background="{ThemeResource SystemControlAcrylicWindowBrush}" Orientation="Horizontal">
+                <CommandBar HorizontalAlignment="Left" Margin="0,0"
+                            Background="Transparent" 
+                            OverflowButtonVisibility="Collapsed">
+                    <AppBarButton Width="50" VerticalAlignment="Stretch"  Icon="Add" Tag="Nuovo" ToolTipService.ToolTip="Nuovo" Command="{Binding CreateCMD}"/>
+                    <AppBarButton Width="50" Icon="Cancel" Tag="Elimina" ToolTipService.ToolTip="Elimina" Command="{Binding DeleteCMD}"/>
+                    <AppBarButton Width="50"  Icon="Edit" Tag="Modifica" ToolTipService.ToolTip="Modifica" Command="{Binding EditCMD}"/>
+                </CommandBar>
+
+                <SymbolIcon Symbol="Find" Margin="15,0" Opacity=".6" />
+                <TextBox Width="150" Height="34" Padding="10,8,10,0" VerticalContentAlignment="Center" BorderThickness="1" PlaceholderForeground="#555555" PlaceholderText="Filtra..." FontFamily="ms-appx:///Fonts/conthrax-sb.ttf#Conthrax"/>
+                <ComboBox Width="150" Height="34"  VerticalAlignment="Center" BorderThickness="1" Margin="15,0,0,0" PlaceholderText="Cerca per..." FontFamily="ms-appx:///Fonts/conthrax-sb.ttf#Conthrax" PlaceholderForeground="#777777"  />
+            </StackPanel>
+            <ProgressRing Name="progressRing" Grid.Row="1" Height="50" Width="50" IsActive="True" HorizontalAlignment="Center" 
+                          VerticalAlignment="Center" Visibility="{Binding Collection.IsNotCompleted}"/>
+
+            <controls:DataGrid x:Name="grid" SelectedItem="{Binding SelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"     
+                               Grid.Row="1" 
+                               Style="{StaticResource DataGridStyle}"
+                               utility:DataGridColumnsBehavior.BindableColumns="{Binding ColumnCollection}"
+                               ItemsSource="{Binding Collection.Result}">
+                <i:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="DoubleTapped">
+                        <core:EventTriggerBehavior.Actions>
+                            <core:InvokeCommandAction Command="{Binding EditCMD}"/>
+                        </core:EventTriggerBehavior.Actions>
+                    </core:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
+
+                <controls:DataGrid.Transitions>
+                    <TransitionCollection>
+                        <AddDeleteThemeTransition />
+                        <ContentThemeTransition />
+                    </TransitionCollection>
+                </controls:DataGrid.Transitions>
+
+
+            </controls:DataGrid>
+
+        </Grid>
+
+    </SplitView>
+</Page>

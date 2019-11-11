@@ -1,0 +1,121 @@
+﻿<Page
+    x:Class="Canis.Views.SubAttivita.Clienti.SubFrames.DettagliCliente"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Canis.Views.SubAttivita.Clienti.SubFrames"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="Transparent">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <TextBlock Text="Dettagli del cliente selezionato"
+                                   FontWeight="Bold"/>
+            <TextBox  Header="Intestazione"
+                      
+                                 MinHeight="20"
+                                 Margin="0,10,0,10"
+                                 PlaceholderText="intestazione*" 
+                                 HorizontalAlignment="Stretch"/>
+            <ComboBox  Header="Categoria"
+                                  ItemsSource="{Binding}"
+                                  DisplayMemberPath="Categoria"
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Categoria*" 
+                                  HorizontalAlignment="Stretch"/>
+            <TextBox Header="Codica Fiscale"
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="Codice Fiscale" 
+                                 HorizontalAlignment="Stretch"/>
+            <TextBox Header="Partita Iva"
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="Partita iva" 
+                                 HorizontalAlignment="Stretch"/>
+            <TextBox  Header="Telefono"
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="Telefono" 
+                                 HorizontalAlignment="Stretch"/>
+            <TextBox Header="Cellulare"
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="Cellulare" 
+                                 HorizontalAlignment="Stretch"/>
+            <TextBox Header="Email" 
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="Email" 
+                                 HorizontalAlignment="Stretch"/>
+            <TextBox Header="Fax"
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="fax" 
+                                 HorizontalAlignment="Stretch"/>
+            
+            <CalendarDatePicker Header="Data Creazione" 
+                                            Margin="0,0,0,10"
+                                           HorizontalAlignment="Stretch"/>
+
+
+            <TextBlock Text="Assegnazione cliente"
+                                   FontWeight="Bold"/>
+            <ComboBox Header="Canale di appartenenza"
+                                      DisplayMemberPath="Descrizione"
+                                       MinHeight="20"
+                                 Margin="0,10,0,10"
+                                      PlaceholderText="Canale di appartenenza" 
+                                      HorizontalAlignment="Stretch"/>
+            <ComboBox Header="Agente" 
+                                 Margin="0,2,0,10"
+                                 PlaceholderText="Agente" 
+                                 HorizontalAlignment="Stretch"/>
+            <ComboBox Header="Struttura"
+                                      DisplayMemberPath="Sruttura"
+                                      Margin="0,0,0,10"
+                                      PlaceholderText="Struttura" 
+                                      HorizontalAlignment="Stretch"/>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2">
+            <TextBlock Text="Informazioni di localizzazione"
+                                   FontWeight="Bold"/>
+            <ComboBox 
+                                  Margin="0,10,0,10" Header="Nazione"
+                                  PlaceholderText="Nazione" 
+                                  HorizontalAlignment="Stretch"/>
+            <ComboBox Header="Regione"
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Regione" 
+                                  HorizontalAlignment="Stretch"/>
+            <ComboBox Header="Provincia" 
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Provincia" 
+                                  HorizontalAlignment="Stretch"/>
+            <ComboBox Header="Comune" 
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Comune" 
+                                  HorizontalAlignment="Stretch"/>
+            <TextBox Header="Indirizzo" 
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Indirizzo" 
+                                  HorizontalAlignment="Stretch"/>
+
+            <TextBox Header="Cap" 
+                                  Margin="0,0,0,10"
+                                  PlaceholderText="Cap" 
+                                  HorizontalAlignment="Stretch"/>
+
+            <TextBox Header="Lingua" 
+                                 Margin="0,0,0,10"
+                                 PlaceholderText="lingua" 
+                                 HorizontalAlignment="Stretch"/>
+
+        </StackPanel>
+
+        
+        
+    </Grid>
+</Page>

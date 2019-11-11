@@ -1,0 +1,141 @@
+﻿<Page x:Class="Canis.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Canis"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="AppTitleBar" Background="Transparent" Grid.Row="0">
+            <!-- Width of the padding columns is set in LayoutMetricsChanged handler. -->
+            <!-- Using padding columns instead of Margin ensures that the background
+                 paints the area under the caption control buttons (for transparent buttons). -->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/StoreLogo.scale-125.png" 
+                   Grid.Column="1" HorizontalAlignment="Left" 
+                   Width="20" Height="20" Margin="10,0"/>
+            <TextBlock Text="Canis" VerticalAlignment="Center"
+                       Grid.Column="1" 
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       Margin="44,0"/>
+
+            <Grid Grid.Column="2" Padding="0,0,200,0">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Rectangle Fill="Red" Width="30" Height="30"/>
+                </StackPanel>
+                <StackPanel Visibility="{Binding IsOnline, UpdateSourceTrigger=PropertyChanged}" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Rectangle Fill="Green" Width="30" Height="30"/>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+        
+        
+        <Hub Grid.Row="1" Background="{ThemeResource NavigationViewExpandedPaneBackground}" Padding="0,0,0,0">
+            <HubSection Header="Home" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}" MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonHome" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonHome}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE10F;" FontSize="40" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Attività" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}" MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonAttivita" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonAttivita}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE71D;" FontSize="40" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Agenti" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}"  MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonAgenti" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonAgenti}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE716;" FontSize="40"/>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="B. Intel." HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}"   MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonBizIntel" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonBizIntel}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE734;" FontSize="40" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Vendite" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}" MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonVendite" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonVendite}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE719;" FontSize="40" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Report" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}"  MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonReport" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonReport}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets"  Glyph="&#xE7C3;" FontSize="40"/>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Rubrica" HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}" MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonRubrica" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonRubrica}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE780;" FontSize="40" />
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Impostazioni"  HorizontalContentAlignment="Center" Background="{ThemeResource NavigationViewExpandedPaneBackground}" MinWidth="100" Style="{StaticResource HubSectionStyle}">
+                <DataTemplate>
+                    <Button Name="ButtonImpostazioni" Background="Transparent" Margin="0,-10,0,0" Command="{Binding NavigationClickCMD}" CommandParameter="{Binding ElementName=ButtonImpostazioni}">
+                        <Button.Content>
+                            <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE713;" FontSize="40"/>
+                        </Button.Content>
+                    </Button>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
+
+        <Frame Grid.Row="2" Content="{Binding PageToNavigate}"/>
+
+        <!--<NavigationView x:Name="mainMenu"
+                        PaneDisplayMode="Top" 
+                        IsBackButtonVisible="Collapsed"
+                        SelectionFollowsFocus="Enabled"
+                        >
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Play" Content="Home" x:Name="SamplePage1Item" />
+                <NavigationViewItem Icon="Save" Content="Attività" x:Name="SamplePage2Item" />
+                <NavigationViewItem Icon="Refresh" Content="Agenti" x:Name="SamplePage3Item" />
+                <NavigationViewItem Icon="Download" Content="Business Intelligence" x:Name="SamplePage4Item" />
+            </NavigationView.MenuItems>
+        
+            <Frame x:Name="mainFrame"/>
+    
+        </NavigationView>-->
+    </Grid>
+</Page>

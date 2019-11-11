@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="Canis.Views.ImpostazioniPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Canis.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignWidth="1920"
+    d:DesignHeight="1280"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid >
+        <StackPanel Width="350">
+            <Image Source="../Assets/LargeTile.scale-400.png" Height="500" Width="500"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,-150"/>
+            <TextBlock Text="Parametri di connessione database" FontWeight="Bold" Opacity=".7" Style="{StaticResource TextBlockStyle}" HorizontalAlignment="Center"/>
+            <Rectangle Height="1" Fill="{ThemeResource ApplicationForegroundThemeBrush}" Margin="0,0,0,20"/>
+            <TextBox Text="{Binding Path=Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Nome utente" Style="{StaticResource TextBoxStyle}"/>
+            <TextBox Text="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Password" Style="{StaticResource TextBoxStyle}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Path=IndirizzoIp, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="IP database" Style="{StaticResource TextBoxStyle}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Path=DbName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Nome database" Style="{StaticResource TextBoxStyle}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Path=DbPort, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Header="Porta" Style="{StaticResource TextBoxStyle}" Margin="0,10,0,0"/>
+
+            <Button Command="{Binding SaveLoginCMD}" Content="Esegui accesso" Background="{ThemeResource SystemAccentColor}" HorizontalAlignment="Center" Margin="20"/>
+        </StackPanel>
+    </Grid>
+</Page>

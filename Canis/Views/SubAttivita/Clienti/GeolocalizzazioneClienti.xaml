@@ -1,0 +1,107 @@
+﻿<Page
+    x:Class="Canis.Views.SubAttivita.Clienti.GeolocalizzazioneClienti"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Canis.Views.SubAttivita.Clienti"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:maps="using:Windows.UI.Xaml.Controls.Maps"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <SplitView x:Name="Cerca" 
+               DisplayMode="CompactOverlay"  
+               PanePlacement="Right"
+               PaneBackground="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <SplitView.Pane>
+            <StackPanel Margin="20">
+            <AppBarButton Icon="Forward" Tag="Chiudi" ToolTipService.ToolTip="Chiudi"/>
+                   <TextBlock Text="RICERCA ONLINE"
+                              HorizontalAlignment="Left" 
+                              FontSize="18" 
+                              FontWeight="Bold" 
+                              FontFamily="Proxima Nova"/>
+                <ListView Margin="0,10" 
+                          Header="Parole chiave di ricerca" 
+                          Background="{ThemeResource ListBoxBackgroundThemeBrush}"
+                          HorizontalAlignment="Stretch"/>
+                <TextBox  FontSize="15"
+                          Header="Scrivi nuovo parametro di ricerca" 
+                          HorizontalAlignment="Stretch"/>
+                <CommandBar HorizontalAlignment="Center" 
+                            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" 
+                            IsOpen="False" 
+                            
+                            OverflowButtonVisibility="Collapsed">
+                    <AppBarButton MaxWidth="50" 
+                                  Icon="Add" Tag="Nuovo" 
+                                  ToolTipService.ToolTip="Nuovo"/>
+                    <AppBarButton MaxWidth="50" Icon="Cancel" 
+                                  Tag="Elimina" 
+                                  ToolTipService.ToolTip="Elimina"/>
+
+                </CommandBar>
+                <ComboBox FontSize="15" Header="Seleziona un punto vendita" HorizontalAlignment="Stretch" />
+                <TextBox FontSize="15" Header="Oppure immetteri un indirizzo"  Text="Via"/>
+                <TextBox FontSize="15" Text="Città"/>
+                <Button FontSize="15" Margin="0,10"
+                        Content="AVVIA RICERCA"
+                        FontFamily="Proxima Nova"
+                        BorderBrush="Gray"
+                        Background="{ThemeResource SystemControlForegroundAccentBrush}"
+                        HorizontalAlignment="Center" />
+            </StackPanel>
+        </SplitView.Pane>
+
+        <maps:MapControl   x:Name="myMap" MapServiceToken="AkxhCmL8dXjNPnvC2YmWWizrlcEHEVC1kUfOZ3KzebWa0j_ddTnnn4YLY0I5lQWO"
+                        
+                         ZoomLevel="7" Style="AerialWithRoads">
+            <maps:MapItemsControl x:Name="MapItems">
+                <maps:MapItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel x:Name="mapItemButton" Margin="-60,-60,0,0" >
+                            <StackPanel>
+
+                                <Border Background="{ThemeResource SystemControlHighlightTransparentBrush}">
+                                    <controls:DropShadowPanel BlurRadius="4.0"
+                                          ShadowOpacity="1"
+                                          OffsetX="2.0"
+                                          OffsetY="2.0"
+                                          Color="Black">
+                                        <TextBlock Text="{Binding DisplayName}"
+                                               Foreground="White"
+                                                FontSize="16"
+                                              />
+                                    </controls:DropShadowPanel>
+                                </Border>
+                                <controls:DropShadowPanel BlurRadius="4.0"
+                                          ShadowOpacity="1"
+                                          OffsetX="2.0"
+                                          OffsetY="2.0"
+                                          Color="Black">
+                                    <Image Source="{Binding ImageSourceUri}" 
+                                       FocusVisualPrimaryBrush="Transparent"
+                                       FocusVisualSecondaryBrush="Transparent"
+                                                   maps:MapControl.NormalizedAnchorPoint="{Binding NormalizedAnchorPoint}"
+                                                   maps:MapControl.Location="{Binding Location}">
+                                        <Image.Transitions>
+                                            <TransitionCollection>
+                                                <EntranceThemeTransition/>
+                                            </TransitionCollection>
+                                        </Image.Transitions>
+
+                                    </Image>
+                                </controls:DropShadowPanel>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </maps:MapItemsControl.ItemTemplate>
+            </maps:MapItemsControl>
+        </maps:MapControl>
+
+    </SplitView>
+            
+   
+</Page>

@@ -1,0 +1,199 @@
+﻿<Page
+    x:Class="Canis.Views.SubAttivita.Clienti.ListaClienti"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:local="using:Canis.Views.SubAttivita.Clienti"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="1600"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <SplitView x:Name="splitView"
+               PaneBackground="{ThemeResource SystemControlBackgroundChromeMediumLowBrush}" 
+               IsPaneOpen="False" 
+               OpenPaneLength="600" 
+               CompactPaneLength="0" 
+               DisplayMode="Inline"
+               PanePlacement="Right">
+        <SplitView.Pane>
+            <ScrollViewer Name="gridPane">
+                <Grid Margin="20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+
+                    <CommandBar Grid.Row="0" Margin="-20,0,0,0" Background="Transparent" IsOpen="False" HorizontalAlignment="Left" OverflowButtonVisibility="Collapsed">
+                        <AppBarButton Icon="Forward" Tag="Chiudi" ToolTipService.ToolTip="Chiudi" />
+                    </CommandBar>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="Dettagli del cliente selezionato"
+                                   FontWeight="Bold"/>
+                            <TextBox  Header="Intestazione"
+                                 MinHeight="20"
+                                 Margin="0,8,0,20"
+                                 PlaceholderText="intestazione*" 
+                                 HorizontalAlignment="Stretch"/>
+                            <ComboBox  Header="Categoria"
+                                  ItemsSource="{Binding}"
+                                  DisplayMemberPath="Categoria"
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Categoria*" 
+                                  HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Codica Fiscale"
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="Codice Fiscale" 
+                                 HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Partita Iva"
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="Partita iva" 
+                                 HorizontalAlignment="Stretch"/>
+                            <TextBox  Header="Telefono"
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="Telefono" 
+                                 HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Cellulare"
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="Cellulare" 
+                                 HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Email" 
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="Email" 
+                                 HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Fax"
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="fax" 
+                                 HorizontalAlignment="Stretch"/>
+                            <ComboBox 
+                                  Margin="0,0,0,20" Header="Nazione"
+                                  PlaceholderText="Nazione" 
+                                  HorizontalAlignment="Stretch"/>
+                            <ComboBox Header="Regione"
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Regione" 
+                                  HorizontalAlignment="Stretch"/>
+                            <ComboBox Header="Provincia" 
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Provincia" 
+                                  HorizontalAlignment="Stretch"/>
+                            <ComboBox Header="Comune" 
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Comune" 
+                                  HorizontalAlignment="Stretch"/>
+                            <TextBox Header="Indirizzo" 
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Indirizzo" 
+                                  HorizontalAlignment="Stretch"/>
+
+                            <TextBox Header="Cap" 
+                                  Margin="0,0,0,20"
+                                  PlaceholderText="Cap" 
+                                  HorizontalAlignment="Stretch"/>
+
+                            <TextBox Header="Lingua" 
+                                 Margin="0,0,0,20"
+                                 PlaceholderText="lingua" 
+                                 HorizontalAlignment="Stretch"/>
+                            <CalendarDatePicker Header="Data Creazione" 
+                                            Margin="0,0,0,20"
+                                           HorizontalAlignment="Stretch"/>
+
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                Margin="20,0,20,0">
+                            <TextBlock Text="Assegnazione cliente"
+                                   FontWeight="Bold"/>
+                            <ComboBox Header="Canale di appartenenza"
+                                      DisplayMemberPath="Descrizione"
+                                       MinHeight="20"
+                                 Margin="0,8,0,20"
+                                      PlaceholderText="Canale di appartenenza" 
+                                      HorizontalAlignment="Stretch"/>
+                            <ComboBox Header="Agente" 
+                                 Margin="0,2,0,20"
+                                 PlaceholderText="Agente" 
+                                 HorizontalAlignment="Stretch"/>
+                            <ComboBox Header="Struttura"
+                                      DisplayMemberPath="Sruttura"
+                                      Margin="0,0,0,20"
+                                      PlaceholderText="Struttura" 
+                                      HorizontalAlignment="Stretch"/>
+                      
+                            <Image Name="imageQR" Height="200" Width="200" Margin="0,20,0,0" Visibility="Collapsed"/>
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Button  
+                            Grid.Row="2"
+                            Margin="0,20,0,0"
+                            
+                            HorizontalAlignment="Center"
+                            Content="Salva i dettagli"                   
+                            Background="{ThemeResource SystemControlForegroundAccentBrush}">
+                    </Button>
+                </Grid>
+            </ScrollViewer>
+        </SplitView.Pane>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" Background="{ThemeResource SystemControlAcrylicWindowBrush}" Orientation="Horizontal">
+                <CommandBar HorizontalAlignment="Left" 
+                            Background="Transparent" 
+                            IsOpen="False" 
+                            
+                            OverflowButtonVisibility="Collapsed">
+                    <AppBarButton MaxWidth="50" Icon="Add" Tag="Nuovo" ToolTipService.ToolTip="Nuovo" />
+                    <AppBarButton MaxWidth="50"  Icon="Cancel" Tag="Elimina" ToolTipService.ToolTip="Elimina" />
+                    <AppBarButton MaxWidth="50" Icon="Edit" Tag="Modifica" ToolTipService.ToolTip="Modifica" />
+                    <AppBarSeparator/>
+                    <AppBarButton MaxWidth="50" Icon="Contact2" Tag="Badge" ToolTipService.ToolTip="Stampa Badge" />
+                    <AppBarSeparator/>
+
+                </CommandBar>
+                <SymbolIcon Symbol="Find" Margin="0,0,15,0" Opacity=".6" />
+                <TextBox Width="150" Height="30" BorderThickness="1" PlaceholderForeground="#555555" PlaceholderText="Filtra clienti"/>
+                <ComboBox Width="150" VerticalAlignment="Center" BorderThickness="1" Margin="15,0,0,0" PlaceholderText="Cerca per..." PlaceholderForeground="#777777"  />
+            </StackPanel>
+            <ProgressRing Name="progressRing" Grid.Row="1" Height="50" Width="50" IsActive="True" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+            <controls:DataGrid x:Name="gridClienti"      
+                               Grid.Row="1"
+                               IsDoubleTapEnabled="True"
+                               Margin="0,0,10,0"
+
+                               ItemsSource="{Binding}">
+                <controls:DataGrid.Columns>
+                    <controls:DataGridTextColumn Header="Cognome" Binding="{Binding Cognome}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="Nome" Binding="{Binding Nome}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="CF" Binding="{Binding Cf}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="Azienda" Binding="{Binding Azienda.Ragionesociale}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="Matricola" Binding="{Binding Matricola}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="Mansione" Binding="{Binding Mansione}" Width="Auto" IsReadOnly="True"/>
+                    <controls:DataGridTextColumn Header="Livello" Binding="{Binding Livello.Descrizione}" Width="Auto" IsReadOnly="True"/>
+
+                </controls:DataGrid.Columns>
+            </controls:DataGrid>
+        </Grid>
+
+    </SplitView>
+</Page>
